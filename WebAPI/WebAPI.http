@@ -1,6 +1,134 @@
-@WebAPI_HostAddress = http://localhost:5050
+@WebAPI_HostAddress = https://localhost:7208
+@apiKey =dXNlcjFAbG9jYWx0b3N0LmNvbTpQQHNzd29yZDE
 
-GET {{WebAPI_HostAddress}}/weatherforecast/
-Accept: application/json
+
 
 ###
+
+GET {{WebAPI_HostAddress}}/api/customers
+
+###
+
+GET https://localhost:7208/debug/routes
+
+###
+
+GET {{WebAPI_HostAddress}}/api/transactions
+
+###
+
+GET {{WebAPI_HostAddress}}/api/hotels
+
+###
+
+GET {{WebAPI_HostAddress}}/api/orders
+
+###
+
+POST {{WebAPI_HostAddress}}/api/orders
+Content-Type: application/json
+
+{
+  
+  "Name": "Order 11",
+  "CustomerId": 2
+}
+
+###
+
+POST {{WebAPI_HostAddress}}/api/customers
+Content-Type: application/json
+{
+  "name": "Peter Davis",
+  "email": "peterdavis@gmail.com"
+} 
+
+###
+
+@customerid=1
+GET {{WebAPI_HostAddress}}/api/customers/{{customerid}}
+
+
+###
+
+PUT {{WebAPI_HostAddress}}/api/hotels/{{id}}
+Content-Type: application/json
+
+{
+  //Hotel
+}
+
+###
+@id=14
+DELETE {{WebAPI_HostAddress}}/api/hotels/{{id}}
+
+###
+
+GET {{WebAPI_HostAddress}}/api/countries
+X-Api-Key:{{$apiKey}}
+ 
+###
+
+POST {{WebAPI_HostAddress}}/api/transactions
+Content-Type: application/json
+
+{
+  "name": "Amazon",
+  "customerId": "3" 
+}
+
+###
+@country=3
+DELETE {{WebAPI_HostAddress}}/api/countries/{{countryid}}
+{
+  "countryId" : 3
+}
+
+###
+
+@orderid=1
+GET {{WebAPI_HostAddress}}/api/orders/{{orderid}}
+
+
+###
+
+@countryid=4
+PUT {{WebAPI_HostAddress}}/api/countries/{{countryid}}
+Content-Type: application/json
+
+{
+  "countryId": 4,
+  "name": "Canada",
+  "code": "CA"
+}
+
+###
+
+@customerid=1
+PUT {{WebAPI_HostAddress}}/api/customers/{{customerid}}
+Content-Type: application/json
+
+{
+  "customerid": 1,
+  "name": "ChangedCustomer 1",
+  "email": "changedCustomer@gmail.com"
+}
+
+###
+
+POST {{WebAPI_HostAddress}}/api/defaultauth/register
+Content-Type: application/json
+{
+  "lastname" : "First2",
+  "firstname" : "Last3",
+  "email": "user@test456.com",
+  "password": "Test@456"
+}
+
+###
+POST {{WebAPI_HostAddress}}/api/defaultauth/login
+Content-Type: application/json
+{
+  "email": "user@test456.com",
+  "password": "Test@456"
+}
